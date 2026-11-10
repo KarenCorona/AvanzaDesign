@@ -1,0 +1,168 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333333;
+    height: 100%;
+}
+
+/* Contenedor principal con Flexbox */
+html, body {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Encabezado */
+header {
+    background-color: #333333;
+    color: #ffffff;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+/* Logo */
+header .logo {
+    max-width: 120px;
+    height: auto;
+}
+
+/* Navegador */
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: #cccccc;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    #mobile-menu {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 10px;
+        z-index: 1000;
+    }
+
+    #mobile-menu.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        color: white;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+}
+
+
+
+/* Sección de contacto */
+#contacto {
+    background-color: #ffffff;
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    border-radius: 8px;
+}
+
+h2 {
+    color: #333333;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info ul li {
+    margin: 10px 0;
+}
+
+.contact-info ul li a {
+    color: #f36e21;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.contact-info ul li a:hover {
+    text-decoration: underline;
+}
+
+
+footer {
+    background-color: #231f20;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto; 
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    #contacto {
+        margin: 10px;
+    }
+}

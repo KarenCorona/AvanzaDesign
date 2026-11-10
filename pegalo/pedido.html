@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotiza tu pedido — Pegalo | AvanzaDesign</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/pegalo.css">
+</head>
+<body class="pegalo">
+    <div class="container">
+        <header>
+            <div class="header-container">
+                <img src="../images/pegalo-logo.png" alt="Pegalo Logo" class="logo">
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+                <nav id="mobile-menu">
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="pedido.html">Cotiza tu pedido</a></li>
+                        <li><a href="../index.html" class="back-link">&larr; AvanzaDesign</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="pedido-wrapper">
+            <div class="pedido-header">
+                <h1>Arma tu pedido de stickers</h1>
+                <p>Completa los datos, mira tu precio estimado y envíalo directo a nuestro WhatsApp.</p>
+            </div>
+
+            <!-- PASO 1: Diseño -->
+            <div class="pedido-card">
+                <h2>1️⃣ ¿Ya tienes tu diseño?</h2>
+                <div class="design-choice">
+                    <div class="design-choice-card" id="card-tengo-diseno" onclick="setDesignChoice('yes')">
+                        <div class="icon">📤</div>
+                        <h3>Sí, tengo mi diseño</h3>
+                        <p>Súbelo aquí y lo incluimos en tu pedido.</p>
+                    </div>
+                    <div class="design-choice-card" id="card-no-diseno" onclick="setDesignChoice('no')">
+                        <div class="icon">🎨</div>
+                        <h3>No tengo diseño</h3>
+                        <p>Nuestro equipo de AvanzaDesign te ayuda a crearlo.</p>
+                    </div>
+                </div>
+
+                <!-- Zona de subida (visible si eligen "Sí") -->
+                <div id="upload-section" style="display:none; margin-top:20px;">
+                    <div class="upload-zone" id="upload-zone">
+                        <div class="icon">🖼️</div>
+                        <p><strong>Haz clic para subir tu diseño</strong> o arrástralo aquí</p>
+                        <small>Aceptamos cualquier formato (PNG, JPG, PDF, AI, PSD...) · Sin límite de tamaño</small>
+                        <input type="file" id="file-input" style="display:none">
+                    </div>
+                    <div class="upload-preview" id="upload-preview">
+                        <div class="file-icon" id="file-icon-generic">📄</div>
+                        <img id="file-thumb" style="display:none;">
+                        <div class="file-info">
+                            <strong id="file-name"></strong>
+                            <span id="file-size"></span>
+                        </div>
+                        <button type="button" class="remove-file" onclick="removeFile()">✕</button>
+                    </div>
+                </div>
+
+                <!-- Nota si eligen "No" -->
+                <div id="no-design-section" style="display:none; margin-top:20px;">
+                    <div class="pedido-note" style="background:#f5edf7;">
+                        Sin problema 🙌 Puedes seguir llenando las medidas y cantidad que tienes en mente, y al enviar tu pedido le avisamos a nuestro equipo que necesitas apoyo de diseño gráfico antes de producir.
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 2: Producto y medidas -->
+            <div class="pedido-card">
+                <h2>2️⃣ Producto y medidas</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="producto">Formato / corte</label>
+                        <select id="producto" onchange="calcularPrecio()">
+                            <option value="redondo">Redondo</option>
+                            <option value="cuadrado">Cuadrado</option>
+                            <option value="rectangular">Rectangular</option>
+                            <option value="ovalado">Ovalado</option>
+                            <option value="esquinas_redondeadas">Esquinas redondeadas</option>
+                            <option value="bumper">Para parachoques (bumper)</option>
+                            <option value="semitroquelado">Semi-troquelado</option>
+                            <option value="hoja">Hoja de stickers (varios diseños)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="material">Material / acabado</label>
+                        <select id="material" onchange="calcularPrecio()">
+                            <option value="vinil_blanco">Vinil blanco (estándar)</option>
+                            <option value="transparente">Transparente</option>
+                            <option value="holografico">Holográfico</option>
+                            <option value="vinil_estatico">Vinil estático (cling)</option>
+                            <option value="vinil_cristal">Vinil para cristal</option>
+                            <option value="transferible">Vinil transferible</option>
+                            <option value="texto_vinil">Texto en vinilo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label style="font-weight:600; font-size:0.9rem; color:var(--pegalo-purple-dark); display:block; margin-bottom:8px;">Medidas rápidas (cm)</label>
+                <div class="size-chips" id="size-chips">
+                    <div class="size-chip active" onclick="setSizeChip(5,5,this)">5 x 5</div>
+                    <div class="size-chip" onclick="setSizeChip(7.5,7.5,this)">7.5 x 7.5</div>
+                    <div class="size-chip" onclick="setSizeChip(10,10,this)">10 x 10</div>
+                    <div class="size-chip" onclick="setSizeChip(12.5,12.5,this)">12.5 x 12.5</div>
+                    <div class="size-chip" onclick="setSizeChip(null,null,this)">Personalizado</div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="ancho">Ancho (cm)</label>
+                        <input type="number" id="ancho" min="1" step="0.5" value="5" oninput="calcularPrecio()">
+                    </div>
+                    <div class="form-group">
+                        <label for="alto">Alto (cm)</label>
+                        <input type="number" id="alto" min="1" step="0.5" value="5" oninput="calcularPrecio()">
+                    </div>
+                </div>
+
+                <details style="margin-top:10px;">
+                    <summary style="cursor:pointer; color:var(--pegalo-pink); font-weight:600; font-size:0.9rem;">¿No sabes qué tamaño elegir? Ver guía visual</summary>
+                    <img src="../images/pegalo-size-guide.jpg" alt="Guía visual de tamaños de stickers Pegalo, de 2x2 a 6x6 cm" style="width:100%; max-width:420px; display:block; margin:14px auto 0; border-radius:var(--pegalo-radius); box-shadow:0 4px 14px rgba(75,31,99,0.12);">
+                </details>
+            </div>
+
+            <!-- PASO 3: Cantidad -->
+            <div class="pedido-card">
+                <h2>3️⃣ Cantidad</h2>
+                <div class="qty-tiers" id="qty-tiers">
+                    <div class="qty-tier active" onclick="setQtyTier(50,this)">50</div>
+                    <div class="qty-tier" onclick="setQtyTier(100,this)">100</div>
+                    <div class="qty-tier" onclick="setQtyTier(200,this)">200</div>
+                    <div class="qty-tier" onclick="setQtyTier(300,this)">300</div>
+                    <div class="qty-tier" onclick="setQtyTier(500,this)">500</div>
+                    <div class="qty-tier" onclick="setQtyTier(1000,this)">1,000</div>
+                    <div class="qty-tier" onclick="setQtyTier(2000,this)">2,000</div>
+                    <div class="qty-tier" onclick="setQtyTier(3000,this)">3,000</div>
+                    <div class="qty-tier" onclick="setQtyTier(5000,this)">5,000</div>
+                    <div class="qty-tier" onclick="setQtyTier(10000,this)">10,000</div>
+                </div>
+                <div class="form-group" style="max-width:200px; margin-top:14px;">
+                    <label for="cantidad">Cantidad exacta</label>
+                    <input type="number" id="cantidad" min="1" value="50" oninput="calcularPrecioDesdeInput()">
+                </div>
+            </div>
+
+            <!-- Resumen de precio -->
+            <div class="price-summary">
+                <div>
+                    <div class="label">Precio estimado</div>
+                    <div class="amount" id="precio-total">$0 MXN</div>
+                    <div class="breakdown" id="precio-desglose"></div>
+                </div>
+                <div class="disclaimer">⚠️ Precio estimado sujeto a confirmación final por nuestro equipo antes de producción.</div>
+            </div>
+
+            <!-- PASO 4: Datos de contacto -->
+            <div class="pedido-card" style="margin-top:24px;">
+                <h2>4️⃣ Tus datos</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombre completo *</label>
+                        <input type="text" id="nombre" placeholder="Tu nombre">
+                        <div class="error-msg" id="error-nombre">Este campo es obligatorio</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono / WhatsApp *</label>
+                        <input type="tel" id="telefono" placeholder="33 1234 5678">
+                        <div class="error-msg" id="error-telefono">Este campo es obligatorio</div>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:18px;">
+                    <label for="notas">Notas adicionales (opcional)</label>
+                    <textarea id="notas" rows="3" placeholder="Colores, fecha de entrega deseada, referencias, etc."></textarea>
+                </div>
+            </div>
+
+            <div class="pedido-submit">
+                <button class="pegalo-btn pegalo-btn-solid" onclick="enviarPedido()">📲 Enviar pedido por WhatsApp</button>
+                <div class="pedido-note">
+                    Al enviar, se abrirá WhatsApp con el resumen de tu pedido ya redactado.
+                    <strong>Si subiste un archivo, no olvides adjuntarlo manualmente en el chat</strong> — por ahora los archivos no se envían automáticamente desde la página.
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Pegalo es una marca de AvanzaDesign &copy; 2026 &middot; <a href="../index.html">Conoce AvanzaDesign</a></p>
+        </footer>
+    </div>
+
+    <script src="../toggleMenu.js"></script>
+    <script src="pegalo-order.js"></script>
+</body>
+</html>

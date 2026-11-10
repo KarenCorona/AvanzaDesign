@@ -1,0 +1,21 @@
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteEngine On
+
+# Elimina .html de las URLs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# Redirige automáticamente URLs con .html a la versión limpia
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^([^.]+)\.html$ /$1 [L,R=301]
+
+# CSS y JS: el navegador/CDN revalida siempre, así los cambios se ven al subir archivos
+<IfModule mod_headers.c>
+<FilesMatch "\.(css|js)$">
+Header set Cache-Control "no-cache, must-revalidate"
+</FilesMatch>
+</IfModule>

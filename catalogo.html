@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo | AvanzaDesign</title>
+    <link rel="stylesheet" href="styles/catalogo.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico?v=3" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png?v=3">
+    <link rel="stylesheet" href="styles/avanza-refresh.css?v=20261014d">
+</head>
+<body>
+    <div class="container">
+        <div id="site-header"></div>
+        <script src="components/nav.js?v=20261014b"></script>
+
+                <div class="catalog-layout">
+            <!-- Menú lateral -->
+            <aside id="sidebar"><ul><li><a href="#default" data-cat="default">Inicio</a></li><li><a href="#playeras" data-cat="playeras">Playeras</a></li><li><a href="#uniformes" data-cat="uniformes">Uniformes</a></li><li><a href="#costos" data-cat="costos">Lista de precios</a></li><li><a href="#papeleria" data-cat="papeleria">Papelería e imprenta</a></li><li><a href="#gorras" data-cat="gorras">Gorras</a></li><li><a href="#partyplanner" data-cat="partyplanner">Party Planner</a></li><li><a href="#corporativa" data-cat="corporativa">Vestimenta Corporativa</a></li></ul></aside>
+
+            <!-- Contenido del catálogo -->
+            <div id="catalogo-content">
+            <div id="default" class="catalog-section" style="display:none;">
+                <h2>Bienvenid@ al Catálogo de AvanzaDesign</h2>
+                <p class="cat-note">Selecciona una categoría del menú para ver nuestros catálogos y listas de precios.</p>
+
+            </div>
+            <div id="playeras" class="catalog-section" style="display:none;">
+                <h2>Catálogo de Playeras</h2>
+                <p class="cat-note">Playeras, polos y sudaderas en todos los colores y tallas.</p>
+                <iframe src="catalogos/CATALOGO_PLAYERAS_AD.pdf" title="Catálogo de playeras"></iframe>
+                <a class="pdf-open" href="catalogos/CATALOGO_PLAYERAS_AD.pdf" target="_blank" rel="noopener">Abrir en pantalla completa</a>
+                <h3>Playeras blancas (tallas)</h3>
+                <iframe src="catalogos/AVANZA DESIGN PLAYERAS BLANCAS  MUESTRA (1).pdf" title="Playeras blancas, tabla de tallas"></iframe>
+                <a class="pdf-open" href="catalogos/AVANZA%20DESIGN%20PLAYERAS%20BLANCAS%20%20MUESTRA%20(1).pdf" target="_blank" rel="noopener">Abrir en pantalla completa</a>
+            </div>
+            <div id="uniformes" class="catalog-section" style="display:none;">
+                <h2>Catálogo de Uniformes</h2>
+                <p class="cat-note">Líneas Work (mezclilla) y Office (camisas y pantalones). Empieza en la página 29 del catálogo.</p>
+                <iframe src="catalogos/CATALOGO_PLAYERAS_AD.pdf#page=29" title="Catálogo de uniformes Work y Office"></iframe>
+                <a class="pdf-open" href="catalogos/CATALOGO_PLAYERAS_AD.pdf#page=29" target="_blank" rel="noopener">Abrir en pantalla completa</a>
+            </div>
+            <div id="costos" class="catalog-section" style="display:none;">
+                <h2>Lista de precios</h2>
+                
+                <iframe src="catalogos/CATALOGO AVANZA COSTOS  2025.pdf" title="Lista de precios AvanzaDesign"></iframe>
+                <a class="pdf-open" href="catalogos/CATALOGO%20AVANZA%20COSTOS%20%202025.pdf" target="_blank" rel="noopener">Abrir en pantalla completa</a>
+            </div>
+            <div id="papeleria" class="catalog-section" style="display:none;">
+                <h2>Papelería e imprenta</h2>
+                <p class="cat-note">Impresión offset y digital: costo por millar.</p>
+                <iframe src="catalogos/LISTA DE PRECIOS PAPELERIA IMPRENTA.pdf" title="Lista de precios de papelería e imprenta"></iframe>
+                <a class="pdf-open" href="catalogos/LISTA%20DE%20PRECIOS%20PAPELERIA%20IMPRENTA.pdf" target="_blank" rel="noopener">Abrir en pantalla completa</a>
+            </div>
+            <div id="gorras" class="catalog-section" style="display:none;">
+                <h2>Catálogo de Gorras</h2>
+                
+                <iframe src="catalogos/CATALOGO GORRAS 2024.pdf" title="Catálogo de gorras"></iframe>
+                <a class="pdf-open" href="catalogos/CATALOGO%20GORRAS%202024.pdf" target="_blank" rel="noopener">Abrir en pantalla completa</a>
+            </div>
+            <div id="partyplanner" class="catalog-section" style="display:none;">
+                <h2>Catálogo Party Planner</h2>
+                
+                <iframe src="catalogos/LISTA PROMOS PARTY PLANER.pdf" title="Promociones Party Planner"></iframe>
+                <a class="pdf-open" href="catalogos/LISTA%20PROMOS%20PARTY%20PLANER.pdf" target="_blank" rel="noopener">Abrir en pantalla completa</a>
+            </div>
+            <div id="corporativa" class="catalog-section" style="display:none;">
+                <h2>Catálogo de Vestimenta corporativa</h2>
+                <p class="cat-note">Da clic en la imagen para ver el catálogo.</p>
+                <a href="https://www.zoomcats.com/catalog/vestimenta-corporativa-avanzadesign" target="_blank" rel="noopener"><img src="https://www.zoomcats.com/catalog/vestimenta-corporativa-avanzadesign/thumbnail/1/large" alt="Portada del catálogo de vestimenta corporativa"></a>
+            </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 AvanzaDesign. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+        <script>
+        function showCatalog(id) {
+            if (!document.getElementById(id)) id = 'default';
+            document.querySelectorAll('.catalog-section').forEach(function (s) { s.style.display = 'none'; });
+            document.getElementById(id).style.display = 'block';
+            document.querySelectorAll('#sidebar a').forEach(function (a) { a.classList.toggle('active', a.dataset.cat === id); });
+        }
+        document.querySelectorAll('#sidebar a').forEach(function (a) {
+            a.addEventListener('click', function (e) { e.preventDefault(); history.replaceState(null, '', '#' + a.dataset.cat); showCatalog(a.dataset.cat); window.scrollTo(0, 0); });
+        });
+        showCatalog(location.hash.slice(1) || 'default');
+        if (location.hash) window.scrollTo(0, 0);
+    </script>
+</body>
+</html>
