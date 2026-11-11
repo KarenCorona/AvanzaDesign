@@ -231,19 +231,15 @@
     font-size: 0.9rem;
 }
 
-/* ---- Gallery reuse ---- */
-.pegalo .gallery {
-    flex-wrap: wrap;
-}
-
-.pegalo .gallery-item {
-    flex: 1 1 220px;
-}
-
-.pegalo .gallery-item img {
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-}
+/* ---- Gallery: cuadrícula fija, todas del mismo tamaño ---- */
+.pegalo .gallery { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; padding:0; }
+.pegalo .gallery-item { flex:none; }
+.pegalo .gallery-item img { width:100%; height:100%; aspect-ratio:1 / 1; object-fit:cover; display:block; }
+.gallery-item[hidden] { display:none !important; }
+.gallery-more-wrap { text-align:center; margin:30px 0 6px; }
+.gallery-more { background:var(--pegalo-gradient); color:#fff; border:0; border-radius:50px; padding:14px 32px; font:700 1rem 'Poppins',Arial,sans-serif; cursor:pointer; box-shadow:0 6px 16px rgba(233,18,128,.3); }
+@media (max-width:900px) { .pegalo .gallery { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media (max-width:560px) { .pegalo .gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; } }
 
 .pegalo .gallery-item .overlay {
     background: rgba(75, 31, 99, 0.75);

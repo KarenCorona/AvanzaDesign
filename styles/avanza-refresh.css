@@ -140,3 +140,10 @@ header .menu-toggle { display:none; color:var(--av-ink); font-size:28px; }
   #galeria .gallery { gap:12px; padding:0 14px; }
   #galeria .gallery-item { flex-basis:calc((100% - 12px) / 2); max-width:calc((100% - 12px) / 2); }
 }
+
+/* Galería: botón "Ver más" y fotos ocultas */
+.gallery-item[hidden] { display:none !important; }
+.gallery-more-wrap { text-align:center; margin:30px 0 6px; }
+.gallery-more { background:var(--av-orange); color:#fff; border:0; border-radius:6px; padding:13px 30px; font:500 1rem 'Poppins',Arial,sans-serif; cursor:pointer; }
+.gallery-more:hover { background:var(--av-orange-dark); }
+.gallery-more:focus-visible { outline:3px solid #1b1b1b; outline-offset:2px; }
